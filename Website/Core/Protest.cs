@@ -33,6 +33,9 @@ namespace Core
         public Protest()
         {
             CreationTime = DateTime.Now;
+            Activities = new List<Activity>();
+            Links = new List<string>();
+            Images = new List<string>();
         }
     }
 }
