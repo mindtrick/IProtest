@@ -15,8 +15,7 @@ namespace DAL
         private static object _lock;
 
 
-        private const string PROTEST_COLLECTION = "donated";
-        private const string COURSES_COLLECTION = "courses";
+        private const string PROTESTS_COLLECTION = "protest";
 
         static DataManager()
         {
