@@ -1,12 +1,7 @@
 ﻿<div>
     <h3>Join the protest: {{jp.protest.name}}</h3>
 
-    <div class="join-progress progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="{{jp.getProgressWidth()}}"
-             aria-valuemin="0" aria-valuemax="100" ng-style="jp.progressWidth">
-            {{jp.getProgressWidth()}}%
-        </div>
-    </div>
+    <uib-progressbar max="100" value="jp.getProgressWidth()"><span style="color:white; white-space:nowrap;">{{jp.getProgressWidth()}}%</span></uib-progressbar>
     <span ng-show="jp.getProgressWidth() == 100" class="text-center center-block" style="font-size: 18px; margin-bottom: 30px; color: rgba(0,0,0,0.7)">
         You are a full supporter thank you!
     </span>
