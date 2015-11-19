@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Core
 {
     public class Activity
     {
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonId]
         public string Id { get; set; }
 
         public string User { get; set; }
