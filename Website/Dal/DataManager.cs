@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using Core;
 
 namespace DAL
 {
@@ -41,22 +42,15 @@ namespace DAL
             }
         }
 
-        // Global API
-
-        /// <summary>
-        /// Update all the PENDING transactions that are expired to CANCELD
-        /// </summary>
-        public void SyncTransactions()
+        public Protest GetProtestById(string id)
         {
-            throw new System.NotImplementedException();
-            // TODO: return the money to the donor
+            return GetCollection<Protest>(PROTESTS_COLLECTION).Find(Builders<Protest>.Filter.Eq(p => p.Id, id)).ToList().FirstOrDefault();
         }
-
 
         private IMongoCollection<T> GetCollection<T>(string collectionName)
         {
             var client = new MongoClient();
-            var db = client.GetDatabase("mastercard");
+            var db = client.GetDatabase("protestsHackathon");
             return db.GetCollection<T>(collectionName);
         }
     }
