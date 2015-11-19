@@ -5,8 +5,6 @@
         .module('proProtest')
         .controller('ProtestsCtrl', ProtestCtrl);
 
-
-    console.log("test");
     ProtestCtrl.$inject = ['ProtestService'];
 
     /* @ngInject */

@@ -1,0 +1,35 @@
+﻿<div>
+    <h3>Join the protest: {{jp.protest.name}}</h3>
+
+    <div class="join-progress progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{jp.getProgressWidth()}}"
+             aria-valuemin="0" aria-valuemax="100" ng-style="jp.progressWidth">
+            {{jp.getProgressWidth()}}%
+        </div>
+    </div>
+    <span ng-show="jp.getProgressWidth() == 100" class="text-center center-block" style="font-size: 18px; margin-bottom: 30px; color: rgba(0,0,0,0.7)">
+        You are a full supporter thank you!
+    </span>
+    <div ng-repeat="app in jp.protest.apps" class="protest-app" ng-class="{'open': app.expanded}">
+        <div class="app-header" ng-click="app.expanded = !app.expanded">
+            <input type="checkbox" class="checkbox" ng-click="jp.appAllowChanged($event, app)" ng-model="app.allowAll" />
+            <img ng-show="!!app" src="/img/{{app.name}}.png" />
+            <span>{{app.name}}</span>
+        </div>
+        <div class="app-options">
+            <ul class="list-unstyled list-group">
+                <li ng-repeat="option in app.options" class="app-option ">
+                    <input type="checkbox" class="checkbox" ng-model="option.allowed" />
+                    <span>
+                        {{option.description}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button type="submit" ng-click="jp.join()" class="btn btn-primary">
+            Join !
+        </button>
+    </div>
+</div>

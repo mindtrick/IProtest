@@ -4,7 +4,8 @@
     'ui.router',
     'proServices',
     'proDirective',
-    'proProtest']);
+    'proProtest',
+    'proJoinProtest']);
 
 mainApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({
@@ -36,6 +37,13 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             templateUrl: "components/protest/protest.html",
             controller: "ProtestCtrl",
             controllerAs: "p"
+        })
+
+        .state('joinProtest', {
+            url: "/joinProtest/:id",
+            templateUrl: "components/joinProtest/joinProtest.html",
+            controller: "JoinProtestCtrl",
+            controllerAs: "jp"
         })
 
         .state('protest.desc', {
