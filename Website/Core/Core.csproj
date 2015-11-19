@@ -100,7 +100,8 @@
     <Compile Include="App.cs" />
     <Compile Include="BasicUserSettings.cs" />
     <Compile Include="FaceBookUserSettings.cs" />
-    <Compile Include="gmailAPI\gmailUtils.cs" />
+    <Compile Include="gmailAPI\GmailUtils.cs" />
+    <Compile Include="GmailUserSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protest.cs" />
