@@ -30,12 +30,23 @@ namespace Core
 
         public IEnumerable<Activity> Activities { get; set; }
 
+        public IEnumerable<ProtestAppContext> AllowedApps { get; set; }
+
+        public class ProtestAppContext
+        {
+            public string Name {get; set;}
+
+            public IEnumerable<string> AvailableOptions {get; set;}
+        }
+        
+
         public Protest()
         {
             CreationTime = DateTime.Now;
             Activities = new List<Activity>();
             Links = new List<string>();
             Images = new List<string>();
+            AllowedApps = new List<ProtestAppContext>();
         }
     }
 }

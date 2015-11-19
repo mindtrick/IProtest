@@ -20,6 +20,7 @@ namespace DAL
 
         private const string PROTESTS_COLLECTION = "protests";
         private const string USERS_COLLECTION = "users";
+        private const string APPS_COLLECTION = "apps";
 
         static DataManager()
         {
@@ -124,6 +125,11 @@ namespace DAL
         public User GetUserByName(string username)
         {
             return GetCollection<User>(USERS_COLLECTION).Find(Builders<User>.Filter.Eq(p => p.Username, username)).ToList().FirstOrDefault();
+        }
+
+        public IEnumerable<App> GetAllApps()
+        {
+            return GetCollection<App>(APPS_COLLECTION).Find(_ => true).ToList();
         }
     }
 }

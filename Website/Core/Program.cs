@@ -33,6 +33,15 @@ namespace Core
           //      .GetCollection<User>("users").Find(Builders<User>.Filter.Eq(p => p.Username, email)).ToListAsync().Result.FirstOrDefault();
          //   }
             gmailAPI.GmailUtils.SendMail(email, new[] { "vsh1818@gmail.com" }, "fuck you", "you", cr);
+
+            //var mon = new MongoClient();
+            //User user = new User("758amirm");
+            //mon.GetDatabase("protestsHackathon").GetCollection<User>("users").InsertOneAsync(user).Wait();
+
+
+            //var mon = new MongoClient();
+            //App app = new App() { Name = "dsfs", Options = new List<Core.App.Option> { new Core.App.Option { Description = "SDAS", Name = "sada" } } };
+            //mon.GetDatabase("protestsHackathon").GetCollection<App>("apps").InsertOneAsync(app).Wait();
         }
     }
 }
