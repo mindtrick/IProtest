@@ -15,15 +15,15 @@ using System.Threading.Tasks;
 
 namespace Core.gmailAPI
 {
-    class gmailUtils
+    static public class GmailUtils
     {
         static string[] Scopes = { GmailService.Scope.GmailCompose,
                                  GmailService.Scope.GmailSend, GmailService.Scope.GmailReadonly,GmailService.Scope.MailGoogleCom
                                  };
         static string ApplicationName = "IProtest";
 
-        public bool SendMail(string fromMail, string[] toMails, string message, string title){
-            var service = GetGmailService();
+        public static  bool SendMail(string fromMail, string[] toMails, string message, string title, UserCredential cr = null){
+            var service = GetGmailService(cr);
             var request = service.Users.Messages.List("me");
             var msg = new Message();
             string body = "To: " + String.Join(",", toMails) + "\n" +
@@ -35,9 +35,9 @@ namespace Core.gmailAPI
             return true;
         }
 
-        private GmailService GetGmailService(){
+        public static UserCredential GetGmailCredentials()
+        {
             UserCredential credential;
-
             using (var stream =
                 new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
             {
@@ -53,6 +53,12 @@ namespace Core.gmailAPI
                     new FileDataStore(credPath, true)).Result;
                 Console.WriteLine("Credential file saved to: " + credPath);
             }
+            return credential;
+        }
+
+        public static GmailService GetGmailService(UserCredential cr = null){
+            UserCredential credential = cr ?? GetGmailCredentials();
+
 
             // Create Gmail API service.
             var service = new GmailService(new BaseClientService.Initializer()

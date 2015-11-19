@@ -15,7 +15,7 @@ namespace Core
 
         public BasicUserSettings TwitterSettings { get; set; }
 
-        public BasicUserSettings GmailSettings { get; set; }
+        public GmailUserSettings GmailSettings { get; set; }
 
         public FaceBookUserSettings FacebookSettings { get; set; }
 
@@ -27,7 +27,7 @@ namespace Core
         {
             Username = username;
             TwitterSettings = new BasicUserSettings();
-            GmailSettings = new BasicUserSettings();
+            GmailSettings = new GmailUserSettings();
             FacebookSettings = new FaceBookUserSettings();
             RegisteredProtests = new List<string>();
             UserAppsContext = new List<UserAppContext>();
