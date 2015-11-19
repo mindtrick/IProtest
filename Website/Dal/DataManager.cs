@@ -47,6 +47,15 @@ namespace DAL
             return GetCollection<Protest>(PROTESTS_COLLECTION).Find(Builders<Protest>.Filter.Eq(p => p.Id, id)).ToList().FirstOrDefault();
         }
 
+        public bool SaveActivity(string protestId, Activity activity)
+        {
+            var u = GetCollection<Protest>(PROTESTS_COLLECTION).UpdateOne(
+                Builders<Protest>.Filter.Eq(p => p.Id, protestId),
+                Builders<Protest>.Update.AddToSet(p => p.Activities, activity));
+
+            return u.IsAcknowledged && u.IsModifiedCountAvailable && u.ModifiedCount > 0;
+        }
+
         private IMongoCollection<T> GetCollection<T>(string collectionName)
         {
             var client = new MongoClient();
