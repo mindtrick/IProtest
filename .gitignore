@@ -33,3 +33,6 @@ node_modules
 /Website/Dal/obj
 /Website/Website/bin
 /Website/Website/obj
+/Website/Core/packages.config
+/Website/Core/gmailAPI/gmailUtils.cs
+/Website/Core/gmailAPI/client_secret.json
