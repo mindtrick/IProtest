@@ -2,23 +2,25 @@
     'use strict';
 
     angular
-        .module('iprotestApp')
+        .module('proServices')
         .service('ApiHttpInfra', ApiHttpInfra);
 
     ApiHttpInfra.$inject = ['$location', '$http', '$q', '$rootScope'];
 
     /* @ngInject */
     function ApiHttpInfra($location, $http, $q, $rootScope) {
+        var self = this;
         this.sendRequest = sendRequest;
 
         ////////////////
+        this.domain = "localhost";
 
         var sendRequest = function (subDomain, method, queryString, request, parser) {
             var deferred = $q.defer();
 
             $rootScope.$emit('$stateNetworkRequestStarted');
             $http({
-                url: domain + subDomain + queryString,
+                url: self.domain + subDomain + queryString,
                 method: method,
                 data: request,
                 headers: {

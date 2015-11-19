@@ -1,17 +1,30 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="iprotestApp">
 <head>
-    <script src="lib/jquery-1.11.3.min.js"></script>
-    <script src="lib/lodash.min.js"></script>
-    <!--<script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
-    <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!--<script src="lib/require.js"></script>-->
+    <!--Angular js-->
     <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-route.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
 
-    <script src="Pages/pagesModule.js"></script>
+    <!--Bootsrap-->
+    <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="lib/bootstrap-ui/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+    <script src="lib/lodash.min.js"></script>
+    <script src="lib/lazyload/ocLazyLoad.min.js"></script>
+    <!--app-->
     <script src="app.js"></script>
+    <script src="common/services/services-module.js"></script>
+    <script src="common/services/httpInfraSrv.js"></script>
+    <script src="components/protest/protest-module.js"></script>
+    <script src="components/protest/protestsService.js"></script>
+    <script src="components/protest/protestsCtrl.js"></script>
+    <script src="components/protest/protestCtrl.js"></script>
+    <script src="components/protest/desc/DescCtrl.js"></script>
+    <script src="components/protest/news/NewsCtrl.js"></script>
+    <script src="common/directives/directive-module.js"></script>
+    <script src="common/directives/pro-spinner.js"></script>
 
 
     <meta charset="UTF-8">
@@ -22,7 +35,7 @@
         <div class="header clearfix">
             <h2>IProtest - Protest for your rights!</h2>
         </div>
-        <div ng-view></div>
+        <div ui-view></div>
 
         <footer class="footer">
             <p>&copy; IProtest 2015</p>
