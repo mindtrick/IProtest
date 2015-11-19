@@ -16,7 +16,7 @@ namespace DAL
         private static object _lock;
 
 
-        private const string PROTESTS_COLLECTION = "protest";
+        private const string PROTESTS_COLLECTION = "protests";
 
         static DataManager()
         {
@@ -47,8 +47,13 @@ namespace DAL
             return GetCollection<Protest>(PROTESTS_COLLECTION).Find(Builders<Protest>.Filter.Eq(p => p.Id, id)).ToList().FirstOrDefault();
         }
 
-        public bool SaveActivity(string protestId, Activity activity)
+        public IEnumerable<Protest> GetAllProtests()
         {
+            return GetCollection<Protest>(PROTESTS_COLLECTION).Find(_ => true).ToList();
+        }
+
+        public bool SaveActivity(string protestId, Activity activity)
+        {            
             var u = GetCollection<Protest>(PROTESTS_COLLECTION).UpdateOne(
                 Builders<Protest>.Filter.Eq(p => p.Id, protestId),
                 Builders<Protest>.Update.AddToSet(p => p.Activities, activity));

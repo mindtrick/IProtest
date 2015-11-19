@@ -11,11 +11,25 @@ namespace Website.Controllers
 {
     public class ProtestsController : ApiController
     {
+        public IEnumerable<Protest> Get()
+        {
+            try
+            {
+                return DataManager.Instance.GetAllProtests();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("ha ha");
+                return null;
+            }
+        }
+
         public Protest Get(string id)
         {
             try
             {
-                return DataManager.Instance.GetProtestById(id);
+                var p =  DataManager.Instance.GetProtestById(id);
+                return p;
             }
             catch(Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,9 @@ namespace Core
     {
         static void Main(string[] args)
         {
+            //var mon = new MongoClient();
+            //Protest p = new Protest() { Title = "test", Description = "my test description" };
+            //mon.GetDatabase("protestsHackathon").GetCollection<Protest>("protests").InsertOneAsync(p).Wait();
         }
     }
 }

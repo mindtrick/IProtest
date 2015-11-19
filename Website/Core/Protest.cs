@@ -14,6 +14,10 @@ namespace Core
         [BsonId]
         public string Id { get; set; }
 
+        public string UserCreated { get; set; }
+
+        public DateTime CreationTime { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -25,5 +29,10 @@ namespace Core
         public IEnumerable<string> Links { get; set; }
 
         public IEnumerable<Activity> Activities { get; set; }
+
+        public Protest()
+        {
+            CreationTime = DateTime.Now;
+        }
     }
 }

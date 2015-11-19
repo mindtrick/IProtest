@@ -20,12 +20,21 @@ namespace Core
 
         public DateTime CreationTime { get; set; }
 
-        public Activity(string user, string message)
+        public string Domain { get; set; }
+
+        public Activity(string user, string message, string domain)
         {
             User = user;
             Message = message;
             CreationTime = DateTime.Now;
             Id = ObjectId.GenerateNewId().ToString();
+            Domain = domain;
+        }
+
+        public Activity Clone()
+        {
+            return new Activity(this.User, this.Message, this.Domain);
+            
         }
     }
 }
