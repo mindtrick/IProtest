@@ -21,6 +21,8 @@ namespace Core
 
         public IEnumerable<string> RegisteredProtests { get; set; }
 
+        public IEnumerable<UserAppContext> UserAppsContext { get; set; }
+
         public User(string username)
         {
             Username = username;
@@ -28,6 +30,23 @@ namespace Core
             GmailSettings = new BasicUserSettings();
             FacebookSettings = new FaceBookUserSettings();
             RegisteredProtests = new List<string>();
+            UserAppsContext = new List<UserAppContext>();
+        }
+
+
+
+
+        public class UserAppContext
+        {
+            public string AppName { get; set; }
+
+            public IEnumerable<UserOptionContext> Options { get; set; }
+        }
+
+        public class UserOptionContext
+        {
+            public string Name { get; set; }
+            public bool Allowed { get; set; }
         }
     }
 }
