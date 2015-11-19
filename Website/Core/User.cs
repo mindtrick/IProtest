@@ -19,9 +19,7 @@ namespace Core
 
         public FaceBookUserSettings FacebookSettings { get; set; }
 
-        public IEnumerable<string> RegisteredProtests { get; set; }
-
-        public IEnumerable<UserAppContext> UserAppsContext { get; set; }
+        public Dictionary<string, UserProtestContext> UserProtestsContext { get; set; }
 
         public User(string username)
         {
@@ -29,12 +27,17 @@ namespace Core
             TwitterSettings = new BasicUserSettings();
             GmailSettings = new GmailUserSettings();
             FacebookSettings = new FaceBookUserSettings();
-            RegisteredProtests = new List<string>();
-            UserAppsContext = new List<UserAppContext>();
+            UserProtestsContext = new Dictionary<string, UserProtestContext>();
         }
 
 
 
+        public class UserProtestContext
+        {
+            public string ProtestId { get; set; }
+
+            public IEnumerable<UserAppContext> AvailableApps { get; set; }
+        }
 
         public class UserAppContext
         {

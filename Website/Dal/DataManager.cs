@@ -58,7 +58,7 @@ namespace DAL
         }
 
 
-        
+
         public bool UpdateAppToken(string username, string token, Expression<Func<User, string>> exp)
         {
             var up =
@@ -113,15 +113,6 @@ namespace DAL
             return up.IsAcknowledged && up.IsModifiedCountAvailable && up.ModifiedCount > 0;
         }
 
-        public bool RegisterUser(string username, string protestId)
-        {
-            var up = GetCollection<User>(USERS_COLLECTION).UpdateOne(
-                Builders<User>.Filter.Eq(p => p.Username, username),
-                Builders<User>.Update.AddToSet(p => p.RegisteredProtests, protestId));
-
-            return up.IsAcknowledged && up.IsModifiedCountAvailable && up.ModifiedCount > 0;
-        }
-
         public User GetUserByName(string username)
         {
             return GetCollection<User>(USERS_COLLECTION).Find(Builders<User>.Filter.Eq(p => p.Username, username)).ToList().FirstOrDefault();
@@ -130,6 +121,17 @@ namespace DAL
         public IEnumerable<App> GetAllApps()
         {
             return GetCollection<App>(APPS_COLLECTION).Find(_ => true).ToList();
+        }
+
+        public bool RegisterUser(string username, User.UserProtestContext userProtestContext)
+        {            
+            var up = GetCollection<User>(USERS_COLLECTION).UpdateOne(
+                Builders<User>.Filter.Eq(p => p.Username, username),
+                Builders<User>.Update.Set("UserProtestsContext." + userProtestContext.ProtestId, userProtestContext)
+                );
+
+
+            return up.IsAcknowledged && up.IsModifiedCountAvailable && up.ModifiedCount > 0;
         }
     }
 }

@@ -67,11 +67,11 @@ namespace Website.Controllers
         }
 
         [ActionName("registerUser")]
-        public bool PostRegisterUser([FromBody]UserProtestContext context)
+        public bool PostRegisterUser([FromBody]UserProtestRegistrationContext context)
         {
             try
             {
-                return DataManager.Instance.RegisterUser(context.UserName, context.ProtestId);
+                return DataManager.Instance.RegisterUser(context.UserName, context.UserProtestContext);
             }
             catch(Exception ex)
             {
@@ -86,11 +86,11 @@ namespace Website.Controllers
             public string Token { get; set; }
         }
 
-        public class UserProtestContext
+        public class UserProtestRegistrationContext
         {
             public string UserName { get; set; }
 
-            public string ProtestId { get; set; }
+            public Core.User.UserProtestContext UserProtestContext { get; set; }
         }
     }
 }
