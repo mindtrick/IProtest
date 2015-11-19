@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="iprotestApp">
 <head>
+    <script src="lib/jquery-1.11.3.min.js"></script>
+    <script src="lib/lodash.min.js"></script>
+    <!--<script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
+    <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--<script src="lib/require.js"></script>-->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+
+    <script src="Pages/pagesModule.js"></script>
+    <script src="app.js"></script>
+
+
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
+    <div class="container">
+        <div class="header clearfix">
+            <h2>IProtest - Protest for your rights!</h2>
+        </div>
+        <div ng-view></div>
 
+        <footer class="footer">
+            <p>&copy; IProtest 2015</p>
+        </footer>
+    </div>
 </body>
 </html>
