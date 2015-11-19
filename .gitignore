@@ -27,3 +27,7 @@ build/Release
 node_modules
 
 .idea
+/Website/Core/bin/Debug
+/Website/Core/obj/Debug
+/Website/Dal/bin/Debug
+/Website/Website/bin
