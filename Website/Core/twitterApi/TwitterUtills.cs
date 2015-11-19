@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TweetSharp;
 
 namespace Core.twitterApi
 {
@@ -20,12 +21,12 @@ namespace Core.twitterApi
 
         public void Authenticate(string accessToken, string accessSecret)
         {
-            service.AuthenticateWith(accessToken, accessSecret);
+            _service.AuthenticateWith(accessToken, accessSecret);
         }
 
         public void SendTwitt(string twitt)
         {
-            service.SendTweet(new SendTweetOptions() { Status = twitt });
+            _service.SendTweet(new SendTweetOptions() { Status = twitt });
         }
     }
 }
