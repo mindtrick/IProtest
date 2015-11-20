@@ -13,7 +13,7 @@ namespace Core
         public string Username { get; set; }
 
 
-        public BasicUserSettings TwitterSettings { get; set; }
+        public TwitterUserSettings TwitterSettings { get; set; }
 
         public GmailUserSettings GmailSettings { get; set; }
 
@@ -24,7 +24,7 @@ namespace Core
         public User(string username)
         {
             Username = username;
-            TwitterSettings = new BasicUserSettings();
+            TwitterSettings = new TwitterUserSettings();
             GmailSettings = new GmailUserSettings();
             FacebookSettings = new FaceBookUserSettings();
             UserProtestsContext = new Dictionary<string, UserProtestContext>();

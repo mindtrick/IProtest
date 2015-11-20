@@ -17,6 +17,14 @@
 
         activate();
 
+        vm.status = "p";
+
+        vm.select = function(id){
+            vm.status = id;
+        };
+        vm.isSelected = function(id){
+            return vm.status == id;
+        };
         ////////////////
 
         function activate() {

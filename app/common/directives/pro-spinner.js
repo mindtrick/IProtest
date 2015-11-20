@@ -12,7 +12,7 @@
         var directive = {
             bindToController: true,
             link: link,
-            restrict: 'E',
+            restrict: 'A',
             scope: {}
         };
         return directive;

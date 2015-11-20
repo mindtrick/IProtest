@@ -1,55 +1,15 @@
-﻿var checkLoginState;
-
-var mainApp = angular.module('iprotestApp', [
+﻿var mainApp = angular.module('iprotestApp', [
     "ui.bootstrap",
     "oc.lazyLoad",
     'ui.router',
     'proServices',
     'proDirective',
     'proProtest',
+<<<<<<< HEAD
+    'satellizer']);
+=======
     'proJoinProtest']);
-
-mainApp.controller('mainController', MainController);
-MainController.$inject = ['$scope', 'FacebookLogin'];
-function MainController($scope, facebookLogin) {
-    var _facebookInitialized = false;
-
-    $scope.checkLoginState = checkLoginState;
-    activate();
-
-    checkLoginState = function () {
-        if (!_facebookInitialized) return;
-
-        facebookLogin.checkLoginState();
-
-        if ($scope.user) return;
-        _loadUser();
-    }
-
-    function activate() {
-        facebookLogin.init().then(function () {
-            _facebookInitialized = true;
-            _loadUser();
-        });
-    }
-
-    function _loadUser() {
-        $scope.user = {};
-        facebookLogin.getName().then(function (name) {
-            if (!name) return;
-
-            $scope.user.userName = name;
-        });
-        facebookLogin.getProfilePic().then(function (profilePic) {
-            if (!profilePic) return;
-
-            $scope.user.profilePic = profilePic;
-        });
-    }
-
-
-
-}
+>>>>>>> b1c3f8b4df78a684571f9ac57e7ef22a7263e879
 
 mainApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({});
@@ -101,7 +61,7 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
         })
 
         .state('protest.forums', {
-            url: "/forums",
+            url: "/protest/:id/forums",
             templateUrl: "components/protest/forums/forums.html",
             controller: "ForumsCtrl"
         })
