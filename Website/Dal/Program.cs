@@ -28,9 +28,9 @@ namespace Dal
             //Protest p = new Protest() { Title = "test", Description = "my test description" };
             //mon.GetDatabase("protestsHackathon").GetCollection<Protest>("protests").InsertOneAsync(p).Wait();
 
-            //var mon = new MongoClient("mongodb://iprotest.cloudapp.net:27017");
-            //User user = new User("758amirm");
-            //mon.GetDatabase("protestsHackathon").GetCollection<User>("users").InsertOneAsync(user).Wait();
+            var mon = new MongoClient("mongodb://iprotest.cloudapp.net:27017");
+            User user = new User("ramatz777@gmail.com");
+            mon.GetDatabase("protestsHackathon").GetCollection<User>("users").InsertOneAsync(user).Wait();
 
             //var mon = new MongoClient("mongodb://iprotest.cloudapp.net:27017");
             //var app = new App() { Name = "Twitter", Options = new List<Core.App.Option> { new Core.App.Option { Name = "allow posts on your behalf", Description = "hi liad" } } };

@@ -1,5 +1,6 @@
 ﻿using Core;
 using DAL;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace Website.Controllers
             try
             {
                 var p =  DataManager.Instance.GetProtestById(id);
+                var apps = DataManager.Instance.GetAllApps();
+                p.Apps = apps;
                 return p;
             }
             catch(Exception ex)
