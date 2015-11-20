@@ -43,14 +43,14 @@
             // for FB.getLoginStatus().
             if (response.status === 'connected') {
                 var user = {};
-                user.token = response.authResponse.accessToken;
-                user.uid = response.authResponse.userID;
+                user.Token = response.authResponse.accessToken;
+                //user.uid = response.authResponse.userID;
 
                 FB.api('/me', function (response) {
-                    user.image = "//graph.facebook.com/" + response.id + "/picture";
-                    user.name = response.name;
+                    //user.image = "//graph.facebook.com/" + response.id + "/picture";
+                    user.UserName = response.name;
                     $.ajax({
-                        url: '/PostStatus/Login',
+                        url: 'http://localhost:65105/api/Users/updateUserTokenOfFacebook',
                         type: 'POST',
                         data: user
                     }).done(function () {

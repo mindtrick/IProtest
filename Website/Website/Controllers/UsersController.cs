@@ -11,9 +11,10 @@ using System.Web.Http;
 
 namespace Website.Controllers
 {
+    
     public class UsersController : ApiController
     {
-
+        
         public User Get(string username)
         {
             try
@@ -78,6 +79,27 @@ namespace Website.Controllers
                 return false;
             }
         }
+
+        [ActionName("sendMessage")]
+        public bool PostSendMessage(UserSendMessageContext context)
+        {
+            try
+            {
+                return DataManager.Instance.SendMessage(context.Message, context.ProtestId);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public class UserSendMessageContext
+        {
+            public string Message { get; set; }
+
+            public string ProtestId { get; set; }
+        }
+
 
         public class TokenUserContext
         {

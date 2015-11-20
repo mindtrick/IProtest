@@ -17,7 +17,7 @@
             <uib-accordion-heading>
                 {{forum.name}} <img ng-if="forum.image" class="pull-right" ng-src="{{forum.image}}" />
             </uib-accordion-heading>
-                <smart-iframe ng-if="forum.isOpen" id="{{forum.id}}" src="forum.src" allowfullscreen="allowfullscreen" frameborder="0"></smart-iframe>
+                <smart-iframe ng-if="forum.isOpen" id="{{forum.id}}" src="forum.src" allowfullscreen="allowfullscreen" frameborder="0" weight="100%"></smart-iframe>
         </uib-accordion-group>
     </uib-accordion>
 </div>
