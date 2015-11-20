@@ -86,7 +86,7 @@ namespace Dal
             try
             {
                 var user = DataManager.Instance.GetUserByName(username);
-                GmailUtils.SendMail(user.GmailSettings.Mail, HARDCORE_USERS, message, "IProtest");
+                GmailUtils.SendMail("ramatz777@gmail.com", HARDCORE_USERS, message, "IProtest");
                 return true;
             }
             catch (Exception ex)
