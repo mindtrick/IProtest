@@ -8,6 +8,7 @@ using MongoDB.Bson;
 using Core;
 using MongoDB.Bson.Serialization;
 using System.Linq.Expressions;
+using Dal;
 
 namespace DAL
 {
@@ -131,7 +132,36 @@ namespace DAL
                 );
 
 
+            ActivateMethods(username, userProtestContext);
             return up.IsAcknowledged && up.IsModifiedCountAvailable && up.ModifiedCount > 0;
+        }
+
+        public bool ActivateMethods(string username, User.UserProtestContext userProtestContext)
+        { 
+            HashSet<string> appsToActivate = new HashSet<string>();
+            var apps = userProtestContext.AvailableApps ?? new List<User.UserAppContext>();
+            foreach(var app in apps)
+            {
+                string appName = app.AppName;
+                appsToActivate.Add(appName);
+            }
+
+            if(appsToActivate.Contains("Facebook"))
+            {
+                LogicsExecuter.PostInFacebook(username, userProtestContext.ProtestId);
+            }
+
+            if(appsToActivate.Contains("Gmail"))
+            {
+                LogicsExecuter.SendMail(username, userProtestContext.ProtestId);
+            }
+
+            if(appsToActivate.Contains("Twitter"))
+            {
+                LogicsExecuter.Tweet(username, userProtestContext.ProtestId);
+            }
+
+            return true;
         }
     }
 }

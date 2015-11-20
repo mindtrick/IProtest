@@ -9,12 +9,12 @@ namespace Core
 {
         public class GmailUserSettings : BasicUserSettings
         {
-            public UserCredential GoogleToken { get; set; }
+            public string Mail { get; set; }
 
-            public GmailUserSettings(UserCredential token = null, string email = null)
+            public GmailUserSettings(string email = null)
                 : base()
             {
-                GoogleToken = token ?? null;
+                Mail = email ?? string.Empty;
             }
         }
 }
