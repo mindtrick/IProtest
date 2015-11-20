@@ -181,7 +181,7 @@ namespace DAL
             return true;
         }
 
-        public bool SendMessage(string username, string message, string protestId)
+        public bool SendMessage(string message, string protestId)
         {
             var usersConnected = GetCollection<User>(USERS_COLLECTION).Find(
                 Builders<User>.Filter.Exists("UserProtestsContext."+protestId)).ToList();

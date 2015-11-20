@@ -84,7 +84,7 @@ namespace Website.Controllers
         {
             try
             {
-                return DataManager.Instance.SendMessage(context.UserName, context.Message, context.ProtestId);
+                return DataManager.Instance.SendMessage(context.Message, context.ProtestId);
             }
             catch(Exception ex)
             {
@@ -94,8 +94,6 @@ namespace Website.Controllers
 
         public class UserSendMessageContext
         {
-            public string UserName { get; set; }
-
             public string Message { get; set; }
 
             public string ProtestId { get; set; }
