@@ -22,6 +22,7 @@
         var _user;
 
         function init() {
+            if(_initDefer) return _initDefer.promise
             _initDefer = $q.defer();
             if (_initialized) {
                 _initDefer.resolve();
