@@ -79,6 +79,29 @@ namespace Website.Controllers
             }
         }
 
+        [ActionName("sendMessage")]
+        public bool PostSendMessage(UserSendMessageContext context)
+        {
+            try
+            {
+                return DataManager.Instance.SendMessage(context.UserName, context.Message, context.ProtestId);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public class UserSendMessageContext
+        {
+            public string UserName { get; set; }
+
+            public string Message { get; set; }
+
+            public string ProtestId { get; set; }
+        }
+
+
         public class TokenUserContext
         {
             public string UserName { get; set; }
