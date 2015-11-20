@@ -8,26 +8,16 @@
 
             <div class="sidebar-links">
 
-
-
                 <div class="link-red" ng-class="{'selected': p.isSelected('a')}" ng-click="p.select('a')">
-
                     <a href="#">
                         <i class="fa fa-heart-o"></i>Favorites
                     </a>
-
-
-
                 </div>
 
                 <div class="link-yellow" ng-class="{'selected': p.isSelected('b')}" ng-click="p.select('b')">
-
                     <a ui-sref=".desc">
                         <i class="fa fa-keyboard-o"></i>Projects
                     </a>
-
-
-
                 </div>
 
                 <div class="link-blue" ng-class="{'selected': p.isSelected('p')}" ng-click="p.select('p')">
@@ -35,16 +25,18 @@
                     <a ui-sref=".news">
                         <i class="fa fa-picture-o"></i>News
                     </a>
-
                 </div>
-                <div class="link-green" ng-class="{'selected': p.isSelected('c')}" ng-click="p.select('c')">
 
+                <div class="link-green" ng-class="{'selected': p.isSelected('c')}" ng-click="p.select('c')">
                     <a ui-sref=".forums">
                         <i class="fa fa-map-marker"></i>Forums
                     </a>
+                </div>
 
-
-
+                <div class="link-red" ng-class="{'selected': p.isSelected('j')}" ng-click="p.select('j')">
+                    <a ui-sref=".join">
+                        <i class="fa glyphicon glyphicon-thumbs-up"></i>Join
+                    </a>
                 </div>
 
             </div>
