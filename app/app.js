@@ -9,8 +9,8 @@ var mainApp = angular.module('iprotestApp', [
     'proProtest']);
 
 mainApp.controller('mainController', MainController);
-MainController.$inject = ['$scope', 'FacebookLogin'];
-function MainController($scope, facebookLogin) {
+MainController.$inject = ['$scope','$timeout', 'FacebookLogin'];
+function MainController($scope, $timeout, facebookLogin) {
     var _facebookInitialized = false;
 
     $scope.checkLoginState = checkLoginState;
@@ -26,10 +26,12 @@ function MainController($scope, facebookLogin) {
     }
 
     function activate() {
-        facebookLogin.init().then(function () {
-            _facebookInitialized = true;
-            _loadUser();
-        });
+        $timeout(function () {
+            facebookLogin.init().then(function () {
+                _facebookInitialized = true;
+                _loadUser();
+            });
+        }, 1000)
     }
 
     function _loadUser() {
