@@ -12,8 +12,8 @@
 
                 <div class="link-red" ng-class="{'selected': p.isSelected('a')}" ng-click="p.select('a')">
 
-                    <a href="#">
-                        <i class="fa fa-heart-o"></i>Favorites
+                    <a ui-sref=".desc">
+                        <i class="fa fa-heart-o"></i>Description
                     </a>
 
 
@@ -22,8 +22,8 @@
 
                 <div class="link-yellow" ng-class="{'selected': p.isSelected('b')}" ng-click="p.select('b')">
 
-                    <a ui-sref=".desc">
-                        <i class="fa fa-keyboard-o"></i>Projects
+                    <a ui-sref=".images">
+                        <i class="fa fa-picture-o"></i>Images
                     </a>
 
 
@@ -33,7 +33,7 @@
                 <div class="link-blue" ng-class="{'selected': p.isSelected('p')}" ng-click="p.select('p')">
 
                     <a ui-sref=".news">
-                        <i class="fa fa-picture-o"></i>News
+                        <i class="fa fa-keyboard-o"></i>News
                     </a>
 
                 </div>
