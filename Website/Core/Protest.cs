@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,10 @@ namespace Core
         [JsonProperty("allowedApps")]
         public IEnumerable<ProtestAppContext> AllowedApps { get; set; }
 
+        [BsonIgnore]
+        [JsonProperty("apps")]
+        public IEnumerable<App> Apps { get; set; }
+        
         public class ProtestAppContext
         {
             public string Name {get; set;}
