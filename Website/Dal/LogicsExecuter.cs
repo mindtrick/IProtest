@@ -21,7 +21,7 @@ namespace Dal
         {
             HARDCORE_USERS = new string[]
             {
-                "ramatz77@gmail.com",
+                "ramatz777@gmail.com",
                 "liad.roz@gmail.com",
                 "mindtrick67@gmail.com",
                 "‫vsh1818@gmail.com"
