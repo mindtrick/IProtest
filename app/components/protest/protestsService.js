@@ -139,7 +139,7 @@
         }
 
         function getProtest(id) {
-            return ApiHttpInfra.sendRequest('Protests/', 'GET', id);
+            return ApiHttpInfra.sendRequest('Protests/', 'GET', '?id=' + id);
         }
 
 

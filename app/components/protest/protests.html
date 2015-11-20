@@ -1,4 +1,4 @@
 <div class="jumbotron" ng-repeat="protest in ps.protests">
-    <h2>{{protest.name}}</h2>
-    <span class="glyphicon glyphicon-arrow-right" ui-sref="protest({id: {{protest.id}}})"></span>
+    <h2>{{protest.title}}</h2>
+    <span class="glyphicon glyphicon-arrow-right" ui-sref="protest({id: '{{protest.id}}'})"></span>
 </div>
