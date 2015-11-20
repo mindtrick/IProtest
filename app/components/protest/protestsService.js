@@ -27,12 +27,12 @@
                                 id: 1,
                                 description: "Allow post on your wall relevant protest's posts and statuses",
                                 allowed: false
-            },
+                            },
             {
                 id: 2,
-                                description: "Allow sharing posts on your behalf",
-                                allowed: false
-                            }
+                description: "Allow sharing posts on your behalf",
+                allowed: false
+            }
                         ]
                     },
                     {
@@ -128,35 +128,37 @@
 
 
         //todo: uncomment when server is up
-        //function getProtests() {
-        //    return ApiHttpInfra.sendRequest('/protest', 'GET', '');
-        //}
+        function getProtests() {
+            return ApiHttpInfra.sendRequest('Protests/', 'GET', '');
+        }
 
-        //function getProtest(id) {
-        //    return ApiHttpInfra.sendRequest('/protest/', 'GET', id)
-        //}
+        function getProtest(id) {
+            return ApiHttpInfra.sendRequest('Protests/', 'GET', id);
+        }
+
+
 
         //todo: comment when server is up
-        function getProtests() {
-            var deferred = $q.defer();
-            $timeout(function(){
-                deferred.resolve(protests);
-            });
+        //function getProtests() {
+        //    var deferred = $q.defer();
+        //    $timeout(function(){
+        //        deferred.resolve(protests);
+        //    });
 
-            return deferred.promise;
-        }
-        function getProtest(id) {
-            var deferred = $q.defer();
-            $timeout(function(){
-                var protest = _.filter(protests,function(protest){
-                    return protest.id == id;
-                })[0];
+        //    return deferred.promise;
+        //}
+        //function getProtest(id) {
+        //    var deferred = $q.defer();
+        //    $timeout(function(){
+        //        var protest = _.filter(protests,function(protest){
+        //            return protest.id == id;
+        //        })[0];
 
-                deferred.resolve(protest);
-            });
+        //        deferred.resolve(protest);
+        //    });
 
-            return deferred.promise;
-        }
+        //    return deferred.promise;
+        //}
     }
 
 })();
