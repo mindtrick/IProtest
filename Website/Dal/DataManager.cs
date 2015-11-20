@@ -9,6 +9,7 @@ using Core;
 using MongoDB.Bson.Serialization;
 using System.Linq.Expressions;
 using Dal;
+using System.Configuration;
 
 namespace DAL
 {
@@ -22,10 +23,12 @@ namespace DAL
         private const string PROTESTS_COLLECTION = "protests";
         private const string USERS_COLLECTION = "users";
         private const string APPS_COLLECTION = "apps";
+        private static string CONNECTION_STRING;
 
         static DataManager()
         {
             _lock = new object();
+            CONNECTION_STRING = ConfigurationManager.AppSettings["mongoConnectionString"];
             BsonClassMap.RegisterClassMap<FaceBookUserSettings>();
         }
 
@@ -74,7 +77,7 @@ namespace DAL
 
         private IMongoCollection<T> GetCollection<T>(string collectionName)
         {
-            var client = new MongoClient();
+            var client = new MongoClient(CONNECTION_STRING);
             var db = client.GetDatabase("protestsHackathon");
             return db.GetCollection<T>(collectionName);
         }
