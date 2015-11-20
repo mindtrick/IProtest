@@ -1,3 +1,67 @@
 .hide{
     display: none;
 }
+
+.app-header input[type=checkbox],
+.app-option input[type=checkbox] {
+    display: inline;
+    margin-right: 3px;
+    margin-left: 10px;
+}
+
+.protest-app .app-header {
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    transition: background 0.2s ease-in 0.05s;
+}
+
+    .protest-app .app-header:hover {
+        background: rgba(0,0,0,0.1);
+        transition: background 0.2s ease-out 0.05s;
+    }
+
+.protest-app.open .app-header {
+    border-radius: 3px 3px 0 0;
+}
+
+.app-header span {
+    color: rgba(0,0,0,0.7);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.app-header img {
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+}
+
+.app-option {
+    border: 1px solid #ddd;
+    padding: 10px 25px;
+    font-size: 15px;
+    color: rgba(0,0,0,0.7);
+    transition: background 0.2s ease-in 0.05s;
+}
+
+.app-options .app-option:last-child {
+    border-radius: 0 0 3px 3px;
+}
+
+.app-option:hover {
+    background: rgba(0,0,0,0.1);
+    transition: background 0.2s ease-out 0.05s;
+}
+
+.app-options ul {
+    max-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all 0.4s ease-out;
+}
+
+.protest-app.open .app-options ul {
+    max-height: 350px;
+    transition: all 0.4s ease-in;
+}

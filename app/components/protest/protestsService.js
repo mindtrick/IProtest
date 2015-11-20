@@ -126,20 +126,27 @@
             }
         ];
 
+
+        //todo: uncomment when server is up
+        //function getProtests() {
+        //    return ApiHttpInfra.sendRequest('/protest', 'GET', '');
+        //}
+
+        //function getProtest(id) {
+        //    return ApiHttpInfra.sendRequest('/protest/', 'GET', id)
+        //}
+
+        //todo: comment when server is up
         function getProtests() {
             var deferred = $q.defer();
-
             $timeout(function(){
                 deferred.resolve(protests);
             });
 
             return deferred.promise;
         }
-
         function getProtest(id) {
-
             var deferred = $q.defer();
-
             $timeout(function(){
                 var protest = _.filter(protests,function(protest){
                     return protest.id == id;
@@ -149,8 +156,6 @@
             });
 
             return deferred.promise;
-
-
         }
     }
 
