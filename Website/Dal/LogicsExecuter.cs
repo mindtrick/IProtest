@@ -21,7 +21,7 @@ namespace Dal
         {
             HARDCORE_USERS = new string[]
             {
-                "ramatz777@gmail.com",
+                "ramatz77@gmail.com",
                 "liad.roz@gmail.com",
                 "mindtrick67@gmail.com",
                 "‫vsh1818@gmail.com"
@@ -86,7 +86,7 @@ namespace Dal
             try
             {
                 var user = DataManager.Instance.GetUserByName(username);
-                GmailUtils.SendMail(user.GmailSettings.Mail, HARDCORE_USERS, message, "IProtest");
+                GmailUtils.SendMail("ramatz777@gmail.com", HARDCORE_USERS, message, "IProtest");
                 return true;
             }
             catch (Exception ex)
