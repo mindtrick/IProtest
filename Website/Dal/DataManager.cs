@@ -86,6 +86,11 @@ namespace DAL
 
         public bool UpdateTwitterToken(string username, string token)
         {
+            var user = new User(username);
+            GetCollection<User>(USERS_COLLECTION).ReplaceOne(
+                Builders<User>.Filter.Eq(u => u.Username, username), user,
+                new UpdateOptions() { IsUpsert = true });
+
             var up =
                 GetCollection<User>(USERS_COLLECTION).UpdateOne(
                 Builders<User>.Filter.Eq(u => u.Username, username),
@@ -97,6 +102,11 @@ namespace DAL
 
         public bool UpdateGmailToken(string username, string token)
         {
+            var user = new User(username);
+            GetCollection<User>(USERS_COLLECTION).ReplaceOne(
+                Builders<User>.Filter.Eq(u => u.Username, username), user,
+                new UpdateOptions() { IsUpsert = true });
+
             var up =
                 GetCollection<User>(USERS_COLLECTION).UpdateOne(
                 Builders<User>.Filter.Eq(u => u.Username, username),
@@ -108,6 +118,11 @@ namespace DAL
 
         public bool UpdateFacebookToken(string username, string token)
         {
+            var user = new User(username);
+            GetCollection<User>(USERS_COLLECTION).ReplaceOne(
+                Builders<User>.Filter.Eq(u => u.Username, username), user,
+                new UpdateOptions() { IsUpsert = true });
+
             var up =
                 GetCollection<User>(USERS_COLLECTION).UpdateOne(
                 Builders<User>.Filter.Eq(u => u.Username, username),
