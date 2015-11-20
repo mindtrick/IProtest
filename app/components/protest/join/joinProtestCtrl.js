@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('proJoinProtest',['proProtest'])
+        .module('proProtest')
         .controller('JoinProtestCtrl', JoinProtestCtrl);
 
     JoinProtestCtrl.$inject = ['$scope','$stateParams', '$state', 'ProtestService'];
@@ -16,7 +16,7 @@
         vm.allowedOptions = allowedOptions;
         vm.totalOptions = totalOptions;
         vm.getProgressWidth = getProgressWidth;
-        vm.join = join;
+        vm.save = save;
 
         activate();
 
@@ -38,9 +38,8 @@
             }
         );
 
-        function join() {
+        function save() {
             //todo: send to server the thing he needs
-            $state.go('protest', { 'id': vm.protest.id });
         }
 
         function allowedOptions() {

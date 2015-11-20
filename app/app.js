@@ -6,8 +6,7 @@ var mainApp = angular.module('iprotestApp', [
     'ui.router',
     'proServices',
     'proDirective',
-    'proProtest',
-    'proJoinProtest']);
+    'proProtest']);
 
 mainApp.controller('mainController', MainController);
 MainController.$inject = ['$scope', 'FacebookLogin'];
@@ -81,9 +80,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             controllerAs: "p"
         })
 
-        .state('joinProtest', {
-            url: "/joinProtest/:id",
-            templateUrl: "components/joinProtest/joinProtest.html",
+        .state('protest.join', {
+            url: "/join",
+            templateUrl: "components/protest/join/joinProtest.html",
             controller: "JoinProtestCtrl",
             controllerAs: "jp"
         })
