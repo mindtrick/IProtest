@@ -6,16 +6,18 @@
         .controller('ProtestCtrl', ProtestCtrl);
 
 
-    ProtestCtrl.$inject = ['$stateParams', 'ProtestService'];
+    ProtestCtrl.$inject = ['$stateParams', '$state','ProtestService'];
 
     /* @ngInject */
-    function ProtestCtrl($stateParams, ProtestService) {
+    function ProtestCtrl($stateParams, $state, ProtestService) {
         var vm = this;
         vm.title = 'ProtestCtrl';
         vm.protest = null;
+        vm.join = join;
+
         activate();
 
-        vm.status = "";
+        vm.status = "p";
 
         vm.select = function(id){
             vm.status = id;
@@ -29,6 +31,10 @@
             ProtestService.getProtest($stateParams.id).then(function(protest){
                 vm.protest = protest;
             })
+        }
+
+        function join() {
+            $state.go('joinProtest', { 'id': vm.protest.id });
         }
     }
 

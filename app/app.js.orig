@@ -5,7 +5,11 @@
     'proServices',
     'proDirective',
     'proProtest',
+<<<<<<< HEAD
     'satellizer']);
+=======
+    'proJoinProtest']);
+>>>>>>> b1c3f8b4df78a684571f9ac57e7ef22a7263e879
 
 mainApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({});
@@ -37,6 +41,13 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             controllerAs: "p"
         })
 
+        .state('joinProtest', {
+            url: "/joinProtest/:id",
+            templateUrl: "components/joinProtest/joinProtest.html",
+            controller: "JoinProtestCtrl",
+            controllerAs: "jp"
+        })
+
         .state('protest.desc', {
             url: "/desc",
             templateUrl: "components/protest/desc/desc.html",
@@ -50,7 +61,7 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
         })
 
         .state('protest.forums', {
-            url: "/forums",
+            url: "/protest/:id/forums",
             templateUrl: "components/protest/forums/forums.html",
             controller: "ForumsCtrl"
         })

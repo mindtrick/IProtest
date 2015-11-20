@@ -12,11 +12,18 @@ namespace Core
         [BsonId]
         public string Name { get; set; }
 
-        public IEnumerable<string> Options { get; set; }
+        public IEnumerable<Option> Options { get; set; }
 
         public App()
         {
-            Options = Options != null ? Options.Distinct() : new List<string>(); 
+            Options = Options = Options ??  new List<Option>(); 
+        }
+
+        public class Option
+        {
+            public string Name { get; set; }
+
+            public string Description { get; set; }
         }
     }
 }

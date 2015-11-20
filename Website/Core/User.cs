@@ -15,19 +15,41 @@ namespace Core
 
         public BasicUserSettings TwitterSettings { get; set; }
 
-        public BasicUserSettings GmailSettings { get; set; }
+        public GmailUserSettings GmailSettings { get; set; }
 
         public FaceBookUserSettings FacebookSettings { get; set; }
 
-        public IEnumerable<string> RegisteredProtests { get; set; }
+        public Dictionary<string, UserProtestContext> UserProtestsContext { get; set; }
 
         public User(string username)
         {
             Username = username;
             TwitterSettings = new BasicUserSettings();
-            GmailSettings = new BasicUserSettings();
+            GmailSettings = new GmailUserSettings();
             FacebookSettings = new FaceBookUserSettings();
-            RegisteredProtests = new List<string>();
+            UserProtestsContext = new Dictionary<string, UserProtestContext>();
+        }
+
+
+
+        public class UserProtestContext
+        {
+            public string ProtestId { get; set; }
+
+            public IEnumerable<UserAppContext> AvailableApps { get; set; }
+        }
+
+        public class UserAppContext
+        {
+            public string AppName { get; set; }
+
+            public IEnumerable<UserOptionContext> Options { get; set; }
+        }
+
+        public class UserOptionContext
+        {
+            public string Name { get; set; }
+            public bool Allowed { get; set; }
         }
     }
 }

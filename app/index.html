@@ -29,19 +29,39 @@
     <script src="components/protest/protestCtrl.js"></script>
     <script src="components/protest/desc/DescCtrl.js"></script>
     <script src="components/protest/news/NewsCtrl.js"></script>
+    <script src="components/protest/forums/ForumsCtrl.js"></script>
     <script src="common/directives/directive-module.js"></script>
     <script src="common/directives/pro-spinner.js"></script>
+    <script src="components/joinProtest/join-protest-module.js"></script>
+    <script src="components/joinProtest/joinProtestCtrl.js"></script>
 
+    <link href="app.js.css" rel="stylesheet" />
+
+    
 
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
     <div class="container">
-        <div class="header clearfix">
-            <h2>IProtest - Protest for your rights!</h2>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">IProtest</a>
+                </div>
+                <p class="navbar-text">Protest for your rights!</p>
+                <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
         </div>
-        <div ui-view></div>
+        </nav>
+        <div style="height:50px"></div>
+
+        <div ui-view style="padding-top:30px;"></div>
 
         <footer class="footer">
             <p>&copy; IProtest 2015</p>
