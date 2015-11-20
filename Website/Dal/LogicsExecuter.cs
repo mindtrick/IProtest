@@ -36,7 +36,7 @@ namespace Dal
             return string.Format(WEB_SITE_ADDRESS, protestId);
         }
 
-        public static bool Tweet(string username, string protestId)
+        public static bool Tweet(string username, string message, string protestId)
         {
             try
             {
@@ -52,17 +52,17 @@ namespace Dal
 
                 utils.Authenticate(token, secret);
 
-                utils.SendTwitt(CreateMessage(protestId));
+                utils.SendTwitt(message);
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
         }
 
-        public static bool PostInFacebook(string username, string protestId)
+        public static bool PostInFacebook(string username, string message, string protestId)
         {
 
             try
@@ -71,26 +71,25 @@ namespace Dal
 
                 var facebookToken = user.FacebookSettings.Token;
 
-                new FBApi().Post(new List<string> { facebookToken }, CreateMessage(protestId));
+                new FBApi().Post(new List<string> { facebookToken }, message);
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
         }
         //fromMail -> me
-        public static bool SendMail(string username, string protestId)
+        public static bool SendMail(string username, string message, string protestId)
         {
             try
             {
                 var user = DataManager.Instance.GetUserByName(username);
-                var protest = DataManager.Instance.GetProtestById(protestId);
-                GmailUtils.SendMail(user.GmailSettings.Mail, HARDCORE_USERS, CreateMessage(protestId), string.Format("IProtest : join protest {0}", protest.Title));
+                GmailUtils.SendMail(user.GmailSettings.Mail, HARDCORE_USERS, message, "IProtest");
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
