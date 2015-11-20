@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace Website.Controllers
 {
+    
     public class ProtestsController : ApiController
     {
         public IEnumerable<Protest> Get()
