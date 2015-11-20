@@ -19,6 +19,7 @@
         function activate() {
             ProtestService.getProtests().then(function(protests){
                 vm.protests = protests;
+                
             })
         }
     }

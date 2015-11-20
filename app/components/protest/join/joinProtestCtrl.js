@@ -5,7 +5,7 @@
         .module('proProtest')
         .controller('JoinProtestCtrl', JoinProtestCtrl);
 
-    JoinProtestCtrl.$inject = ['$scope','$stateParams', '$state', 'ProtestService'];
+    JoinProtestCtrl.$inject = ['$scope', '$stateParams', '$state', 'ProtestService'];
 
     /* @ngInject */
     function JoinProtestCtrl($scope, $stateParams, $state, ProtestService) {
@@ -26,7 +26,8 @@
             var protestId = $stateParams.id;
             ProtestService.getProtest(protestId).then(function (protest) {
                 vm.protest = protest;
-            
+            })
+        }
 
         $scope.$watch(
             function () {
@@ -37,17 +38,16 @@
             }
         );
 
-            })
-        }
         function save() {
             //todo: send to server the thing he needs
+            $state.go('protest', {id: vm.protest.id})
         }
 
         function allowedOptions() {
             if (!vm.protest) return 0;
 
             var allowedOptions = 0;
-            vm.protest.allowedApps.forEach(function (app) {
+            vm.protest.apps.forEach(function (app) {
                 app.options.forEach(function (option) {
                     if (option.allowed)
                         allowedOptions++;
@@ -60,7 +60,7 @@
             if (!vm.protest) return 0;
 
             var totalOptions = 0;
-            vm.protest.allowedApps.forEach(function (app) {
+            vm.protest.apps.forEach(function (app) {
                 totalOptions += app.options.length;
             });
             return totalOptions;
@@ -72,7 +72,7 @@
             return Math.round((allowedOptions() / totalOptions()) * 100);
         }
 
-        function appAllowChanged($event,app) {
+        function appAllowChanged($event, app) {
             app.options.forEach(function (option) {
                 option.allowed = app.allowAll;
             })
