@@ -1,0 +1,51 @@
+
+<table border="0" style="width:100%">
+    <tr>
+        <td width="50%">
+            <div class="panel panel-default">
+                <div class="panel-heading">Lecture with Prof X</div>
+                <div class="panel-body">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/YQHsXMglC9A" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="panel panel-default">
+                <div class="panel-heading">Lecture with Prof Y</div>
+                <div class="panel-body">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/KYsenpooJsE" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Articles</div>
+    <div class="panel-body">
+        <p align="left">
+            <a src="#">Research by the Z University</a></br>
+            <a src="#">Article  - Globes 2015/07</a></br>
+            <a src="#">Article  - NYTimes 2015/01</a>
+        </p>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Images</div>
+    <div class="panel-body">
+        <div ng-controller="ImagesCtrl as i">
+            <div style="height: 305px">
+                <uib-carousel interval="i.myInterval" no-wrap="i.noWrapSlides">
+                    <uib-slide ng-repeat="slide in i.slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="margin:auto;">
+                        <div class="carousel-caption">
+                            <h4>Slide {{$index}}</h4>
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </uib-slide>
+                </uib-carousel>
+            </div>
+        </div>
+    </div>
+</div>
