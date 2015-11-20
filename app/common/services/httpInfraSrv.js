@@ -13,9 +13,9 @@
         this.sendRequest = sendRequest;
 
         ////////////////
-        this.domain = "localhost";
-
-        var sendRequest = function (subDomain, method, queryString, request, parser) {
+        this.domain = "http://localhost:65105/api/";
+        
+        function sendRequest (subDomain, method, queryString, request, parser) {
             var deferred = $q.defer();
 
             $rootScope.$emit('$stateNetworkRequestStarted');
