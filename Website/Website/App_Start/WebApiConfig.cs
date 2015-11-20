@@ -14,10 +14,7 @@ namespace Website
         public static void Register(HttpConfiguration config)
         {
 
-            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
-            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
-
+           
             config.Routes.MapHttpRoute(
                 name: "ControllerAndAction",
                 routeTemplate: "api/{controller}/{action}/{id}",

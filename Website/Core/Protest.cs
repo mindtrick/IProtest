@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +12,34 @@ namespace Core
     public class Protest
     {
         [BsonRepresentation(BsonType.ObjectId)]
+        [JsonProperty("id")]
         [BsonId]
         public string Id { get; set; }
-
+        [JsonProperty("userCreated")]
         public string UserCreated { get; set; }
 
+        [JsonProperty("creationTime")]
         public DateTime CreationTime { get; set; }
 
+        [JsonProperty("title")]
         public string Title { get; set; }
 
+        [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("about")]
         public string About { get; set; }
 
+        [JsonProperty("images")]
         public IEnumerable<string> Images { get; set; }
 
+        [JsonProperty("links")]
         public IEnumerable<string> Links { get; set; }
 
+        [JsonProperty("activities")]
         public IEnumerable<Activity> Activities { get; set; }
 
+        [JsonProperty("allowedApps")]
         public IEnumerable<ProtestAppContext> AllowedApps { get; set; }
 
         public class ProtestAppContext

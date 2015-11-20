@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,20 @@ namespace Core
     public class User
     {
         [BsonId]
+        [JsonProperty("username")]
         public string Username { get; set; }
 
 
+        [JsonProperty("twitterSettings")]
         public TwitterUserSettings TwitterSettings { get; set; }
 
+        [JsonProperty("gmailSettings")]
         public GmailUserSettings GmailSettings { get; set; }
 
+        [JsonProperty("facebookSettings")]
         public FaceBookUserSettings FacebookSettings { get; set; }
 
+        [JsonProperty("userProtestsContext")]
         public Dictionary<string, UserProtestContext> UserProtestsContext { get; set; }
 
         public User(string username)
