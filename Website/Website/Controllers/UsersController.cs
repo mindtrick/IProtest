@@ -81,7 +81,7 @@ namespace Website.Controllers
         }
 
         [ActionName("sendMessage")]
-        public bool PostSendMessage(UserSendMessageContext context)
+        public bool PostSendMessage([FromBody]UserSendMessageContext context)
         {
             try
             {

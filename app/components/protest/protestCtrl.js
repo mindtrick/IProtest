@@ -17,7 +17,7 @@
 
         activate();
 
-        vm.status = "aac";
+        vm.status = "p";
 
         vm.select = function(id){
             vm.status = id;
@@ -38,7 +38,6 @@
 
             ProtestService.getProtest($stateParams.id).then(function(protest){
                 vm.protest = protest;
-                $state.go('protest.desc');
             })
         }
 

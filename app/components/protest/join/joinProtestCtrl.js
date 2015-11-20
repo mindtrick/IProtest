@@ -5,7 +5,7 @@
         .module('proProtest')
         .controller('JoinProtestCtrl', JoinProtestCtrl);
 
-    JoinProtestCtrl.$inject = ['$scope', '$stateParams', '$state', 'ProtestService'];
+    JoinProtestCtrl.$inject = ['$scope','$stateParams', '$state', 'ProtestService'];
 
     /* @ngInject */
     function JoinProtestCtrl($scope, $stateParams, $state, ProtestService) {
@@ -40,7 +40,6 @@
 
         function save() {
             //todo: send to server the thing he needs
-            $state.go('protest', {id: vm.protest.id})
         }
 
         function allowedOptions() {
@@ -72,7 +71,7 @@
             return Math.round((allowedOptions() / totalOptions()) * 100);
         }
 
-        function appAllowChanged($event, app) {
+        function appAllowChanged($event,app) {
             app.options.forEach(function (option) {
                 option.allowed = app.allowAll;
             })
