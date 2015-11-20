@@ -27,9 +27,9 @@
                                 id: 1,
                                 description: "Allow post on your wall relevant protest's posts and statuses",
                                 allowed: false
-                            },
-                            {
-                                id: 2,
+            },
+            {
+                id: 2,
                                 description: "Allow sharing posts on your behalf",
                                 allowed: false
                             }

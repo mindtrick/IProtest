@@ -57,6 +57,12 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             templateUrl: "components/protest/news/news.html",
             controller: "NewsCtrl"
         })
+
+        .state('protest.forums', {
+            url: "/protest/:id/forums",
+            templateUrl: "components/protest/forums/forums.html",
+            controller: "ForumsCtrl"
+        })
     ;
 
 
