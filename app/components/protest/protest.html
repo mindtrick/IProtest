@@ -35,10 +35,26 @@
 
                 <div class="link-red" ng-class="{'selected': p.isSelected('j')}" ng-click="p.select('j')">
                     <a ui-sref=".join">
-                        <i class="fa glyphicon glyphicon-thumbs-up"></i>Join
+                        <i class="fa glyphicon glyphicon-thumbs-up"></i>Support
                     </a>
                 </div>
 
+                <div ng-if="p.user.userName && p.protest.userCreated && p.user.userName.toLowerCase() == p.protest.userCreated.toLowerCase()" class="link-blue" ng-class="{'selected': p.isSelected('pp')}" ng-click="p.select('pp')">
+                    <a ui-sref=".post">
+                        <i class="fa glyphicon glyphicon-send"></i>Post Message
+                    </a>
+                </div>
+
+                <div class="link-yellow" ng-class="{'selected': p.isSelected('d')}" ng-click="p.select('d')" style="position:relative;">
+                    <a>
+                        <i class="fa glyphicon glyphicon-euro"></i>Donate
+                    </a>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="E3GTS3J2EB294">
+                        <input type="submit" style="z-index:100000;height:100%;width:100%; top:0; background: transparent; color: transparent; position: absolute; border:none;" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    </form>
+                </div>
             </div>
 
         </aside>
