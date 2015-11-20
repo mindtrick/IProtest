@@ -8,11 +8,15 @@ namespace Core
 {
     public class BasicUserSettings
     {
+
         public string Token { get; set; }
+
+        public string Name { get; set; }
 
         public BasicUserSettings()
         {
             Token = Token ?? string.Empty;
+            Name = Name ?? string.Empty;
         }
     }
 }
