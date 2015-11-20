@@ -107,6 +107,12 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             controller: "ForumsCtrl",
             controllerAs: "f"
         })
+        .state('protest.images', {
+            url: "/images",
+            templateUrl: "components/protest/images/images.html",
+            controller: "ImagesCtrl",
+            controllerAs: "i"
+        })
     ;
 
 
