@@ -48,7 +48,7 @@
                     user.image = "//graph.facebook.com/" + response.id + "/picture";
                     user.name = response.name;
                     $.ajax({
-                        url: '/PostStatus/Login',
+                        url: 'http://localhost:65105/Users/PostUpdateUserTokenOfFacebook',
                         type: 'POST',
                         data: user
                     }).done(function () {
