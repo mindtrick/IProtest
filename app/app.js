@@ -4,13 +4,12 @@
     'ui.router',
     'proServices',
     'proDirective',
-    'proProtest']);
+    'proProtest',
+    'satellizer']);
 
 mainApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
-    $ocLazyLoadProvider.config({
-
-    });
-} ]);
+    $ocLazyLoadProvider.config({});
+}]);
 
 mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -39,17 +38,55 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
         })
 
         .state('protest.desc', {
-            url: "/protest/:id/desc",
+            url: "/desc",
             templateUrl: "components/protest/desc/desc.html",
             controller: "DescCtrl"
         })
 
         .state('protest.news', {
-            url: "/protest/:id/news",
+            url: "/news",
             templateUrl: "components/protest/news/news.html",
             controller: "NewsCtrl"
         })
     ;
 
 
-} ]);
+}])
+
+    .config(function ($authProvider) {
+
+        $authProvider.twitter({
+            url: '/auth/twitter'
+        });
+        // No additional setup required for Twitter
+
+        $authProvider.oauth2({
+            name: 'foursquare',
+            url: '/auth/foursquare',
+            clientId: 'MTCEJ3NGW2PNNB31WOSBFDSAD4MTHYVAZ1UKIULXZ2CVFC2K',
+            redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
+            authorizationEndpoint: 'https://foursquare.com/oauth2/authenticate'
+        });
+
+
+        function skipIfLoggedIn($q, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) {
+                deferred.reject();
+            } else {
+                deferred.resolve();
+            }
+            return deferred.promise;
+        }
+
+        function loginRequired($q, $location, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) {
+                deferred.resolve();
+            } else {
+                $location.path('/login');
+            }
+            return deferred.promise;
+        }
+    })
+;

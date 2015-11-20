@@ -1,21 +1,61 @@
 
+
 <div class="row">
-    <div class="col-md-3 col-sm-3">
-        <uib-tabset justified="true">
-            <uib-tabset vertical="true" type="pills">
-                <uib-tab heading="Description" ui-sref=".desc">
-                </uib-tab>
-                <uib-tab heading="news" ui-sref=".news">
-                </uib-tab>
-                <uib-tab heading="Vertical 2">Vertical content 2</uib-tab>
-            </uib-tabset>
-        </uib-tabset>
+    <div class="col col-20">
+        <aside class="sidebar-left-collapse">
+
+            <a href="#" class="company-logo">Logo</a>
+
+            <div class="sidebar-links">
+
+                <div class="link-blue" ng-class="{'selected': p.isSelected('p')}" ng-click="p.select('p')">
+
+                    <a ui-sref=".news">
+                        <i class="fa fa-picture-o"></i>Photography
+                    </a>
+
+                </div>
+
+                <div class="link-red" ng-class="{'selected': p.isSelected('a')}" ng-click="p.select('a')">
+
+                    <a href="#">
+                        <i class="fa fa-heart-o"></i>Favorites
+                    </a>
+
+
+
+                </div>
+
+                <div class="link-yellow" ng-class="{'selected': p.isSelected('b')}" ng-click="p.select('b')">
+
+                    <a ui-sref=".desc">
+                        <i class="fa fa-keyboard-o"></i>Projects
+                    </a>
+
+
+
+                </div>
+
+                <div class="link-green" ng-class="{'selected': p.isSelected('c')}" ng-click="p.select('c')">
+
+                    <a href="#">
+                        <i class="fa fa-map-marker"></i>Places
+                    </a>
+
+
+
+                </div>
+
+            </div>
+
+        </aside>
     </div>
-    <div class="col-md-9 col-sm-9">
+
+
+    <div class="col col-66" style="margin-left: 60px">
         <div ui-view></div>
     </div>
+
 </div>
-
-
 
 {{p.protest | json }}
