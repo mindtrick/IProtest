@@ -9,13 +9,19 @@
 
     /* @ngInject */
     function ProtestService($q, $timeout, ApiHttpInfra) {
+        this.sendPost = sendPost;
         this.getProtests = getProtests;
         this.getProtest = getProtest;
+
+        function sendPost(protestId, message) {
+            ApiHttpInfra.sendRequest('/protest/SendMessage', 'POST','', { Message: message, ProtestId: protestId });
+        }
 
         ////////////////
         var protests = [
             {
                 id: 1,
+                userCreated: "Bar Levy",
                 name: 'test protest',
                 description: 'bla bla',
                 apps: [
