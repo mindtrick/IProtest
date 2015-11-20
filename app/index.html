@@ -1,6 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="iprotestApp">
 <head>
+    
+    <!-- JQuery -->
+    <script src="lib/jquery-1.11.3.min.js"></script>
+
 
     <!--Angular js-->
     <script src="lib/angular.min.js"></script>
@@ -13,9 +17,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
     <script src="lib/lodash.min.js"></script>
     <script src="lib/lazyload/ocLazyLoad.min.js"></script>
+
+    <!-- Facebook SDK -->
+    <script src="lib/fb_sdk.js"></script>
+
     <!--app-->
     <script src="app.js"></script>
     <script src="common/services/services-module.js"></script>
+    <script src="common/services/facebook-login.js"></script>
     <script src="common/services/httpInfraSrv.js"></script>
     <script src="components/protest/protest-module.js"></script>
     <script src="components/protest/protestsService.js"></script>
@@ -35,7 +44,7 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
+<body ng-controller="mainController">
     <div class="container">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -49,7 +58,16 @@
                     <a class="navbar-brand" href="#">IProtest</a>
                 </div>
                 <p class="navbar-text">Protest for your rights!</p>
-                <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+                <p ng-hide="user" class="navbar-text navbar-right">
+                    <fb:login-button scope="public_profile,email,publish_actions" onlogin="checkLoginState()">
+                    </fb:login-button>
+                </p>
+                <p style="margin: 2px 10px;" class="navbar-text navbar-right" ng-show="user && user.profilePic">
+                    <img style="height:45px; width:45px; border-radius:50%;" ng-src="{{user.profilePic}}" />
+                </p>
+                <p class="navbar-text navbar-right" ng-show="user && user.userName">
+                    Signed in as <a href="#" class="navbar-link">{{user.userName}}</a>
+                </p>
             </div>
         </nav>
         <div style="height:50px"></div>
