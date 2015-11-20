@@ -33,16 +33,10 @@ function MainController($scope, facebookLogin) {
     }
 
     function _loadUser() {
-        $scope.user = {};
-        facebookLogin.getName().then(function (name) {
-            if (!name) return;
+        facebookLogin.getUser().then(function (user) {
+            if (!user || !user.id) return;
 
-            $scope.user.userName = name;
-        });
-        facebookLogin.getProfilePic().then(function (profilePic) {
-            if (!profilePic) return;
-
-            $scope.user.profilePic = profilePic;
+            $scope.user = user;
         });
     }
 
@@ -85,6 +79,13 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             templateUrl: "components/protest/join/joinProtest.html",
             controller: "JoinProtestCtrl",
             controllerAs: "jp"
+        })
+
+        .state('protest.post', {
+            url: "/post",
+            templateUrl: "components/protest/post/post.html",
+            controller: "PostCtrl",
+            controllerAs: "pp"
         })
 
         .state('protest.desc', {

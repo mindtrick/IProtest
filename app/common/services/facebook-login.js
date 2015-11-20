@@ -14,10 +14,12 @@
         this.getName = FBGetName;
         this.getId = FBGetId;
         this.getProfilePic = FBGetProfilePic;
+        this.getUser = FBGetUser;
         this.init = init;
 
         var _initialized = false;
         var _initDefer;
+        var _user;
 
         function init() {
             _initDefer = $q.defer();
@@ -115,7 +117,42 @@
             var defer = $q.defer();
             FBGetId().then(function (id) {
                 defer.resolve("//graph.facebook.com/" + id + "/picture");
-            })
+            });
+            return defer.promise;
+        }
+
+        function FBGetUser() {
+            var defer = $q.defer();
+            if (_user && _user.id) {
+                defer.resolve(_user);
+                return defer.promise;
+            }
+
+            _user = {};
+            var promises = [];
+
+            var namePromise = FBGetName();
+            namePromise.then(function (userName) {
+                _user.userName = userName;
+            });
+            promises.push(namePromise);
+
+            var picPromise = FBGetProfilePic();
+            picPromise.then(function (profilePic) {
+                _user.profilePic = profilePic;
+            });
+            promises.push(picPromise);
+
+            var idPromise = FBGetId();
+            idPromise.then(function (id) {
+                _user.id = id;
+            });
+            promises.push(idPromise);
+
+            $q.all(promises).then(function () {
+                defer.resolve(_user);
+            });
+
             return defer.promise;
         }
     }
