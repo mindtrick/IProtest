@@ -1,8 +1,8 @@
-<div ng-controller="NewsCtrl">
+<div>
     <script type="text/ng-template">
         <div class="panel {{panelClass || 'panel-default'}}">
             <div class="panel-heading">
-                <h4 class="panel-title" style="color:#fa39c3, height:800px">
+                <h4 class="panel-title" style="color:#fa39c3; height:800px">
                     <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
                             ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
                 </h4>
@@ -13,35 +13,11 @@
         </div>
     </script>
     <uib-accordion>
-        <uib-accordion-group>
+        <uib-accordion-group ng-repeat="news in n.news" is-open="news.isOpen">
             <uib-accordion-heading>
-                Walla - very important topic <img class="pull-right" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQop9SwrLJQsDhL58eF9BLBlfWzc27odH7VdlpRJJphlB_6S_WcxWEYr3U"/>
+                {{news.name}} <img ng-if="news.image" class="pull-right" ng-src="{{news.image}}" />
             </uib-accordion-heading>
-            <iframe id="i1" src="http://news.walla.co.il/item/2908395" width="100%" height="600px" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </uib-accordion-group>
-        <uib-accordion-group>
-            <uib-accordion-heading>
-                Ynet - hot descussion <img class="pull-right" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQop9SwrLJQsDhL58eF9BLBlfWzc27odH7VdlpRJJphlB_6S_WcxWEYr3U"/>
-            </uib-accordion-heading>
-            <iframe src="http://www.ynet.co.il/articles/0,7340,L-4728382,00.html" width="100%" height="600px" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </uib-accordion-group>
-        <uib-accordion-group>
-            <uib-accordion-heading>
-                Nrg - breaking <img class="pull-right" src="http://2.bp.blogspot.com/-nuSEy00J8RM/Tpp14Cpnx_I/AAAAAAAAB8w/gOsW5afUGuM/s23/icon_new.gif"/>
-            </uib-accordion-heading>
-            <iframe src="http://www.nrg.co.il/online/1/ART2/738/632.html?hp=1&cat=875&loc=1" width="100%" height="600px" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </uib-accordion-group>
-        <uib-accordion-group>
-            <uib-accordion-heading>
-                Ynet - protest coverage
-            </uib-accordion-heading>
-            <iframe id="i4" src="http://www.ynet.co.il/articles/0,7340,L-4728365,00.html" width="100%" height="600px" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </uib-accordion-group>
-        <uib-accordion-group>
-            <uib-accordion-heading>
-                Mako - protest coverage
-            </uib-accordion-heading>
-            <iframe src="http://www.mako.co.il/news-israel/local-q4_2015/Article-912d6cdbe512151004.htm" width="100%" height="600px" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <smart-iframe ng-if="news.isOpen" id="{{news.id}}" src="news.src" allowfullscreen="allowfullscreen" frameborder="0"></smart-iframe>
         </uib-accordion-group>
     </uib-accordion>
 </div>
