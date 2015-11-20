@@ -14,7 +14,7 @@
         this.getProtest = getProtest;
 
         function sendPost(protestId, message) {
-            ApiHttpInfra.sendRequest('/protest/SendMessage', 'POST', { Message: message, ProtestId: protestId });
+            ApiHttpInfra.sendRequest('/protest/SendMessage', 'POST','', { Message: message, ProtestId: protestId });
         }
 
         ////////////////
